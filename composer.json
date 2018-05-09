@@ -1,0 +1,48 @@
+{
+    "name": "ym-careers/simplesamlphp",
+    "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
+    "type": "project",
+    "keywords": [ "saml2", "shibboleth","oauth","ws-federation","sp","idp" ],
+    "homepage": "http://www.communitybrands.com",
+    "license": "LGPL-2.1",
+    "authors": [
+        {
+            "name": "Shruti Nafday",
+            "email": "shruti.nafday@communitybrands.com"
+        },
+        {
+            "name": "Zhenbo Shi",
+            "email": "zhenbo.shi@communitybrands.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SimpleSAML\\": "lib/SimpleSAML"
+        },
+        "files": ["lib/_autoload_modules.php"]
+    },
+    "require": {
+        "php": ">=5.4",
+        "ext-SPL": "*",
+        "ext-zlib": "*",
+        "ext-pcre": "*",
+        "ext-openssl": "*",
+        "ext-dom": "*",
+        "ext-date": "*",
+        "ext-hash": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ym-careers/saml2": "1.0.*",
+        "robrichards/xmlseclibs": "~3.0",
+        "whitehat101/apr1-md5": "~1.0",
+        "twig/twig": "~1.0",
+        "gettext/gettext": "^3.5",
+        "jaimeperez/twig-configurable-i18n": "^1.2"
+    },
+    "require-dev": {
+        "ext-pdo_sqlite": "*",
+        "phpunit/phpunit": "~4.8.35",
+        "mikey179/vfsStream": "~1.6",
+        "friendsofphp/php-cs-fixer": "^2.2"
+    }
+}
