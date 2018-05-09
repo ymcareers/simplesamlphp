@@ -165,7 +165,10 @@ class SimpleSAML_Session implements Serializable
             }
         } else { // regular session
             $sh = \SimpleSAML\SessionHandler::getSessionHandler();
-            $this->sessionId = $sh->newSessionId();
+            $this->sessionId = $sh->getCookieSessionId();
+            if ($this->sessionId === null) {
+                $this->sessionId = $sh->newSessionId();
+            }
             $sh->setCookie($sh->getSessionCookieName(), $this->sessionId, $sh->getCookieParams());
 
 

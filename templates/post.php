@@ -22,7 +22,7 @@
     submit() on the form causes failed submission if the form has another 
     element with name or id of submit.
     See: https://developer.mozilla.org/en/DOM/form.submit#Specification -->
-    <input type="submit" id="postLoginSubmitButton"/>
+    <input type="submit" style="display:none;"id="postLoginSubmitButton"/>
 <?php
 if (array_key_exists('post', $this->data)) {
     $post = $this->data['post'];
@@ -36,7 +36,13 @@ if (array_key_exists('post', $this->data)) {
         $this->data['RelayStateName'] => $this->data['RelayState'],
     );
 }
-
+echo "
+        <script type=\"text/javascript\">
+        window.onload = function(){
+                document.getElementById('postLoginSubmitButton').click();
+            };
+        </script>
+        ";
 /**
  * Write out one or more INPUT elements for the given name-value pair.
  *
