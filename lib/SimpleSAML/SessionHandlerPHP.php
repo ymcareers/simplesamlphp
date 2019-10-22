@@ -49,11 +49,16 @@ class SessionHandlerPHP extends SessionHandler
         $config = \SimpleSAML_Configuration::getInstance();
         $this->cookie_name = $config->getString('session.phpsession.cookiename', null);
 
-        if (session_status() === PHP_SESSION_ACTIVE) {
+        if (function_exists('session_status') && defined('PHP_SESSION_ACTIVE')) { // PHP >= 5.4
+            $previous_session = session_status() === PHP_SESSION_ACTIVE;
+        } else {
+            $previous_session = (session_id() !== '') && (session_name() !== $this->cookie_name);
+        }
+        if ($previous_session) {
             if (session_name() === $this->cookie_name || $this->cookie_name === null) {
                 Logger::warning(
-                    'There is already a PHP session with the same name as SimpleSAMLphp\'s session, or the '.
-                    "'session.phpsession.cookiename' configuration option is not set. Make sure to set ".
+                    'There is already a PHP session with the same name as SimpleSAMLphp\'s session, or the ' .
+                    "'session.phpsession.cookiename' configuration option is not set. Make sure to set " .
                     "SimpleSAMLphp's cookie name with a value not used by any other applications."
                 );
             }
@@ -114,8 +119,8 @@ class SessionHandlerPHP extends SessionHandler
              */
             session_cache_limiter('');
         }
-        @session_start();
         session_cache_limiter($cacheLimiter);
+        @session_start();
     }
 
 
@@ -235,8 +240,7 @@ class SessionHandlerPHP extends SessionHandler
      */
     public function loadSession($sessionId = null)
     {
-        assert(is_string($sessionId) || $sessionId === null);
-
+        assert('is_string($sessionId) || is_null($sessionId)');
         if ($sessionId !== null) {
             if (session_id() === '') {
                 // session not initiated with getCookieSessionId(), start session without setting cookie
@@ -259,7 +263,7 @@ class SessionHandlerPHP extends SessionHandler
         }
 
         $session = $_SESSION['SimpleSAMLphp_SESSION'];
-        assert(is_string($session));
+        assert('is_string($session)');
 
         $session = unserialize($session);
 
@@ -347,7 +351,7 @@ class SessionHandlerPHP extends SessionHandler
             // session already started, close it
             session_write_close();
         }
-        
+
         session_set_cookie_params(
             $cookieParams['lifetime'],
             $cookieParams['path'],
