@@ -32,7 +32,7 @@
         "ext-hash": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "ym-careers/saml2": "1.0.*",
+        "ym-careers/saml2": "2.0.*",
         "robrichards/xmlseclibs": "~3.0",
         "whitehat101/apr1-md5": "~1.0",
         "twig/twig": "~1.0",
