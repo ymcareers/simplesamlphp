@@ -35,9 +35,9 @@
         "ym-careers/saml2": "2.0.*",
         "robrichards/xmlseclibs": "~3.0",
         "whitehat101/apr1-md5": "~1.0",
-        "twig/twig": "~1.0",
+        "twig/twig": "~2.0",
         "gettext/gettext": "^3.5",
-        "jaimeperez/twig-configurable-i18n": "^1.2"
+        "simplesamlphp/twig-configurable-i18n": "^2.3"
     },
     "require-dev": {
         "ext-pdo_sqlite": "*",

@@ -8,8 +8,8 @@
  * @package SimpleSAMLphp
  */
 
-use JaimePerez\TwigConfigurableI18n\Twig\Environment as Twig_Environment;
-use JaimePerez\TwigConfigurableI18n\Twig\Extensions\Extension\I18n as Twig_Extensions_Extension_I18n;
+use SimpleSAML\TwigConfigurableI18n\Twig\Environment as Twig_Environment;
+use SimpleSAML\TwigConfigurableI18n\Twig\Extensions\Extension\I18n as Twig_Extensions_Extension_I18n;
 
 class SimpleSAML_XHTML_Template
 {
